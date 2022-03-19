@@ -1,0 +1,82 @@
+@mixin useFlex($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  min-height: 100vh;
+  @include useFlex(column);
+}
+
+.sub-container {
+  @include useFlex(column);
+  background: #fff;
+  box-shadow: 2px 2px 10px gray;
+  width: 90%;
+  max-width: 70rem;
+  border-radius: 1rem;
+  padding: 2rem;
+
+  table {
+    width: 100%;
+    max-width: 70rem;
+    margin-top: 2rem;
+    border-collapse: collapse;
+    border: 1px solid var(--light-primary);
+    background: #fff;
+    border-radius: 10px;
+
+    &, th, td {
+      border-bottom: 1px solid var(--light-primary);
+    }
+
+    th {
+      text-align: left;
+      font-size: 1.2rem;
+      padding: 1.3rem .8rem;
+      background: var(--primary);
+      color: #eaeaea;
+    }
+
+    td {
+      padding: 1rem .8rem;
+      cursor: pointer;
+    }
+
+    tr:hover {
+      background: var(--primary);
+      color: #eaeaea;
+    }
+  }
+
+  .button-search {
+    width: 100%;
+    margin-top: .3rem;
+    font-size: 1.2rem;
+    padding: .5rem;
+  }
+
+  .input-group {
+    width: 100%;
+    margin-bottom: .7rem;
+  }
+
+  .div-col {
+    @include useFlex(column);
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .div-row {
+    @include useFlex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .done {
+    text-decoration: line-through;
+  }
+}
