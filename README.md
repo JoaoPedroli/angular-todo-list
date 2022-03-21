@@ -3,7 +3,7 @@
 ## Este pequeno projeto consiste em um simples todo list, cuja funcionalidades são: Listar, Adicionar, Editar, Excluir e Concluir as Tarefas. Pude incluir neste projeto o Material Angular, que é um conjunto de componentes de estilo do Angular, junto com TypeScript e SASS. Também pude pôr em prática os conceitos de Clean Code, na medida no possível.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
 
-## a) Criar uma aplicação Front-end utilizando Angular na versão mais recente.
+### a) Criar uma aplicação Front-end utilizando Angular na versão mais recente.
 
 # Instruções para execução em um ambiente local para que se possa rodar o projeto:
 
