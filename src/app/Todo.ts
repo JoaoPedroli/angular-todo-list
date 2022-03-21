@@ -1,16 +1,17 @@
-interface DataProps {
+export interface TodoProps {
   title: string;
   description?: string;
   responsible: string;
-  priority?: 'alta' | 'media' | 'alta';
+  priority?: 'alta' | 'media' | 'baixa';
   deadline?: string;
-  situation?: 'em-andamento' | 'finalizado';
+  situation?: 'em-andamento' | 'finalizada';
+  index: number,
 }
 
 export class Todo {
-  data: DataProps;
+  data: TodoProps;
 
-  constructor(data: DataProps) {
+  constructor(data: TodoProps) {
     data.situation = "em-andamento";
     this.data = data;
   }

@@ -27,34 +27,55 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 @Component({
   selector: 'app-live-form-dialog',
-  templateUrl: './live-form-dialog.component.html',
+  templateUrl: './add-form-dialog.component.html',
   styleUrls: ['../app.component.scss'],
 })
-export class LiveFormDialogComponent {
+export class AddFormDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public props: {
       getTodos: () => Todo[];
       setTodos: (todos: Todo[]) => any;
+      setFilteredTodos: (filteredTodos: Todo[]) => any;
     },
-    public dialogRef: MatDialogRef<LiveFormDialogComponent>
+    public dialogRef: MatDialogRef<AddFormDialogComponent>
   ) {}
 
   title: string;
   description: string;
   responsible: string;
-  priority: 'alta' | 'media' | 'alta';
+  priority: 'alta' | 'media' | 'baixa';
   deadline: string;
 
   formControl = new FormControl('', [Validators.required]);
 
   matcher = new MyErrorStateMatcher();
 
+  async confirm(
+    message: string,
+    confirmButton = 'Sim',
+    cancelButton = 'Não',
+    title = 'Tem certeza?',
+    obj = {}
+  ) {
+    return await Swal.fire({
+      title: title,
+      text: message,
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonColor: 'var(--accent)',
+      confirmButtonColor: 'var(--green)',
+      cancelButtonText: cancelButton,
+      confirmButtonText: confirmButton,
+      ...obj,
+    }).then((result) => result.isConfirmed);
+  }
+
   close(): void {
     this.dialogRef.close();
   }
 
-  addTodo() {
+  async addTodo() {
     const areAllFieldsFilled = (): boolean =>
       this.title &&
       this.description &&
@@ -65,16 +86,31 @@ export class LiveFormDialogComponent {
         : false;
 
     if (areAllFieldsFilled()) {
-      let todo = new Todo({
+      const isConfirmed = await this.confirm("Tem certeza de que deseja adicionar esta tarefa?");
+      if(!isConfirmed) return;
+      
+      const newTodos = this.props.getTodos();
+      const getNewIndex = (): number =>
+        newTodos[newTodos.length - 1].data.index + 1;
+
+      const todo = new Todo({
+        index: getNewIndex(),
         title: this.title,
         description: this.description,
         responsible: this.responsible,
         priority: this.priority,
         deadline: this.deadline,
       });
-      const newTodos = this.props.getTodos();
+
       newTodos.push(todo);
       this.props.setTodos(newTodos);
+      this.props.setFilteredTodos(newTodos);
+      Swal.fire({
+        title: 'Sucesso!',
+        text: 'Tarefa criada com sucesso!',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
       this.close();
     } else {
       Swal.fire({

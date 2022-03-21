@@ -19,6 +19,18 @@
   border-radius: 1rem;
   padding: 2rem;
 
+  #disabled {
+    cursor: not-allowed;
+
+    input, textarea, select {
+      cursor: not-allowed;
+    }
+  }
+
+  #green {
+    background: var(--light-green);
+  }
+
   table {
     width: 100%;
     max-width: 70rem;
@@ -35,19 +47,27 @@
     th {
       text-align: left;
       font-size: 1.2rem;
-      padding: 1.3rem .8rem;
+      padding: 1.3rem 1rem;
       background: var(--primary);
       color: #eaeaea;
     }
 
     td {
-      padding: 1rem .8rem;
+      padding: 1rem;
       cursor: pointer;
-    }
 
-    tr:hover {
-      background: var(--primary);
-      color: #eaeaea;
+      &:not(:first-child, :last-child) {
+        width: 50%;
+      }
+
+      .divActions {
+        display: flex;
+        align-items: center;
+        
+        button {
+          margin: 0 5px;
+        }
+      }
     }
   }
 

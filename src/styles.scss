@@ -1,8 +1,20 @@
 @import "../node_modules/@angular/material";
 
 :root {
+  --white: #eaeaea;
+  --black: #353535;
+  --black1: #636e72;
+  --black2: #859BB2;
   --primary: #3f51b5;
   --light-primary: #3f51b56b;
+  --accent: #ff4081;
+  --light-accent: #ff408060;
+  --green: #00b84a;
+  --light-green: #00b84a48;
+  --dark-green: #038537;
+  --yellow: #ffaf19;
+  --light-yellow: #ffae1998;
+  --dark-yellow: #876c3a;
 }
 
 .mat-form-field-appearance-outline .mat-form-field-outline {
@@ -16,8 +28,8 @@
 }
 
 body {
-  background: #eaeaea;
-  color: #353535;
+  background: var(--white);
+  color: var(--black);
 
   select {
     cursor: pointer;

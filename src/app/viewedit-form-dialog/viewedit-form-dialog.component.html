@@ -1,0 +1,125 @@
+<form
+  class="sub-container"
+  style="box-shadow: none; width: 100%"
+  (ngSubmit)="editTodo()"
+>
+  <div class="div-row">
+    <h1 *ngIf="props.isEdit">Editar Tarefa</h1>
+    <h1 *ngIf="!props.isEdit">Ver Tarefa</h1>
+
+    <button mat-fab type="button" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <br />
+
+  <mat-form-field
+    [id]="props.isEdit ? '' : 'disabled'"
+    class="example-full-width input-group"
+    appearance="outline"
+  >
+    <mat-label>Título</mat-label>
+    <input
+      matInput
+      class="form-control"
+      [(ngModel)]="title"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    <mat-hint *ngIf="props.isEdit">Insira o título da tarefa</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field
+    type="text-area"
+    [id]="props.isEdit ? '' : 'disabled'"
+    class="example-full-width input-group"
+    appearance="outline"
+  >
+    <mat-label>Descrição</mat-label>
+    <textarea
+      matInput
+      class="form-control"
+      style="min-height: 3rem"
+      [(ngModel)]="description"
+      [ngModelOptions]="{ standalone: true }"
+    ></textarea>
+    <mat-hint *ngIf="props.isEdit">Insira a descrição da tarefa</mat-hint>
+  </mat-form-field>
+
+  <div class="div-row">
+    <mat-form-field
+      [id]="props.isEdit ? '' : 'disabled'"
+      class="example-full-width input-group"
+      appearance="outline"
+    >
+      <mat-label>Responsável</mat-label>
+      <input
+        matInput
+        class="form-control mat-input"
+        [(ngModel)]="responsible"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <mat-hint *ngIf="props.isEdit">Insira o responsável pela tarefa</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field
+      style="margin-left: 1rem"
+      [id]="props.isEdit ? '' : 'disabled'"
+      class="example-full-width input-group"
+      appearance="outline"
+    >
+      <mat-label>Prioridade</mat-label>
+      <mat-select
+        [(ngModel)]="priority"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        <mat-option value="alta">Alta</mat-option>
+        <mat-option value="media">Média</mat-option>
+        <mat-option value="baixa">Baixa</mat-option>
+      </mat-select>
+      <mat-hint *ngIf="props.isEdit">Escolha a prioridade da tarefa</mat-hint>
+    </mat-form-field>
+  </div>
+  <div class="div-row">
+    <mat-form-field
+      [id]="props.isEdit ? '' : 'disabled'"
+      class="example-full-width input-group"
+      appearance="outline"
+    >
+      <mat-label>Deadline</mat-label>
+      <input
+        matInput
+        type="date"
+        class="form-control mat-input"
+        [(ngModel)]="deadline"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <mat-hint *ngIf="props.isEdit">Informe a deadline da tarefa</mat-hint>
+    </mat-form-field>
+    <mat-form-field
+      style="margin-left: 1rem"
+      [id]="props.isEdit ? '' : 'disabled'"
+      class="example-full-width input-group"
+      appearance="outline"
+    >
+      <mat-label>Situação</mat-label>
+      <mat-select
+        [(ngModel)]="situation"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        <mat-option value="em-andamento">Em andamento</mat-option>
+        <mat-option value="finalizada">Finalizada</mat-option>
+      </mat-select>
+      <mat-hint *ngIf="props.isEdit">Escolha a prioridade da tarefa</mat-hint>
+    </mat-form-field>
+  </div>
+  <button
+    *ngIf="props.isEdit"
+    mat-raised-button
+    type="submit"
+    color="primary"
+    class="button-search"
+  >
+    Editar
+  </button>
+</form>

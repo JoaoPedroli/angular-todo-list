@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { LiveFormDialogComponent } from './live-form-dialog/live-form-dialog.component';
+import { AddFormDialogComponent } from './add-form-dialog/add-form-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,9 +13,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ViewEditFormDialogComponent } from './viewedit-form-dialog/viewedit-form-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, LiveFormDialogComponent],
+  declarations: [AppComponent, AddFormDialogComponent, ViewEditFormDialogComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
