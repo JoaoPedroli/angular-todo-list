@@ -8,6 +8,8 @@
 .container {
   min-height: 100vh;
   @include useFlex(column);
+  padding-top: 5rem;
+  justify-content: flex-start;
 }
 
 .sub-container {
@@ -60,12 +62,21 @@
         width: 50%;
       }
 
-      .divActions {
+      .div-actions {
         display: flex;
         align-items: center;
         
         button {
           margin: 0 5px;
+        }
+
+        @media (max-width: 650px) {
+          flex-direction: column;
+          justify-content: center;
+
+          button:not(:last-child) {
+            margin-bottom: 3px;
+          }
         }
       }
     }
@@ -94,6 +105,23 @@
     @include useFlex;
     justify-content: space-between;
     width: 100%;
+
+    .input-group:not(:first-child) {
+      margin-left: 10px;
+    }
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+      justify-content: center;
+
+      h1 {
+        margin-bottom: 1.5rem !important;
+      }
+
+      .input-group {
+        margin-left: 0 !important;
+      }
+    }
   }
 
   .done {

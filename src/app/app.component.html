@@ -46,7 +46,6 @@
       </mat-form-field>
 
       <mat-form-field
-        style="margin-left: 1rem"
         class="example-full-width input-group"
         appearance="outline"
       >
@@ -60,7 +59,6 @@
       </mat-form-field>
 
       <mat-form-field
-        style="margin-left: 1rem"
         class="example-full-width input-group"
         appearance="outline"
       >
@@ -100,7 +98,7 @@
         <th>Responsável</th>
         <th>Ações</th>
       </tr>
-      <tr *ngFor="let v of filteredTodos">
+      <tr *ngFor="let v of filteredTodos; let i = index">
         <td [id]="v.data.situation === 'em-andamento' ? '' : 'green'" (click)="openViewEditFormDialog(false, v.data.index)">
           {{ v.data.index + 1 }}
         </td>
@@ -111,7 +109,7 @@
           {{ v.data.responsible }}
         </td>
         <td [id]="v.data.situation === 'em-andamento' ? '' : 'green'">
-          <div class="divActions">
+          <div class="div-actions">
             <button
               mat-fab
               style="background: var(--green)"
@@ -124,21 +122,21 @@
             <button
               mat-mini-fab
               color="primary"
-              (click)="openViewEditFormDialog(false, v.data.index)"
+              (click)="openViewEditFormDialog(false, i)"
             >
               <mat-icon>remove_red_eye</mat-icon>
             </button>
             <button
               mat-mini-fab
               color="primary"
-              (click)="openViewEditFormDialog(true, v.data.index)"
+              (click)="openViewEditFormDialog(true, i)"
             >
               <mat-icon>edit</mat-icon>
             </button>
             <button
               mat-mini-fab
               color="accent"
-              (click)="handleRemove(v.data.index)"
+              (click)="handleRemove(i)"
             >
               <mat-icon>delete</mat-icon>
             </button>

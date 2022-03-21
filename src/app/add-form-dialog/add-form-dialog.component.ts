@@ -91,7 +91,7 @@ export class AddFormDialogComponent {
       
       const newTodos = this.props.getTodos();
       const getNewIndex = (): number =>
-        newTodos[newTodos.length - 1].data.index + 1;
+        newTodos.length ? newTodos[newTodos.length - 1]?.data.index + 1 : 0;
 
       const todo = new Todo({
         index: getNewIndex(),
@@ -105,13 +105,13 @@ export class AddFormDialogComponent {
       newTodos.push(todo);
       this.props.setTodos(newTodos);
       this.props.setFilteredTodos(newTodos);
+      this.close();
       Swal.fire({
         title: 'Sucesso!',
         text: 'Tarefa criada com sucesso!',
         icon: 'success',
         confirmButtonText: 'OK',
       });
-      this.close();
     } else {
       Swal.fire({
         title: 'Preencha todos os campos!',

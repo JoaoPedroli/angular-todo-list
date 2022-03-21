@@ -163,5 +163,12 @@ export class AppComponent {
 
     this.todos = this.todos.filter((v, i) => i !== id);
     this.filteredTodos = this.todos;
+
+    Swal.fire({
+      title: 'Sucesso!',
+      text: 'Tarefa removida com sucesso',
+      icon: 'success',
+      confirmButtonText: 'OK',
+    });
   }
 }
