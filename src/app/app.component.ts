@@ -13,29 +13,7 @@ import { ViewEditFormDialogComponent } from './viewedit-form-dialog/viewedit-for
 export class AppComponent {
   dialogStyles: {};
 
-  todos: Todo[] = [
-    new Todo({
-      deadline: '2022-03-15',
-      description:
-        'asdasd asid sdasndoasnd sdasiodnoansdonasnas dasdnjasbdjnasdbjsa asdhhsdhaoshd',
-      priority: 'alta',
-      responsible:
-        'Jaooo Pedroooooooosidh ssns sios oi ksnsjns js sj jsjb j sjs sbbj sb sh sshssh hgss yvuiaiuv sduiv aus vaus duyav sdyv auy shdv usdv uiasv d',
-      situation: 'em-andamento',
-      title:
-        'saodpans sadhjsdoaishdoi oiisodis ijo aoisdioaiosd i sd sdii iausbduiob sdb 8 ausbd 0y bsdby auysvdu0b asuyd uyas di0g asduiobg asuiodu ais dbuio',
-      index: 0,
-    }),
-    new Todo({
-      deadline: '2022-03-15',
-      description: 'asdasd',
-      priority: 'alta',
-      responsible: 'asdasd',
-      situation: 'em-andamento',
-      title: 'asdsd',
-      index: 1,
-    }),
-  ];
+  todos: Todo[] = [];
 
   filteredTodos: Todo[];
   todoDataToEdit: Todo;
